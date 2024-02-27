@@ -1,5 +1,7 @@
+import config from "./config";
 import { addAlreadyNotified, checkAlreadyNotified } from "./libs/alreadyNotified";
 import { getFreeGames } from "./libs/getFreeGames";
+import { sendDiscordWebhookMessage } from "./libs/sendDiscordWebhookMessage";
 
 
 const checkNewFreeGames = async() => {
@@ -26,6 +28,7 @@ const checkNewFreeGames = async() => {
 
         console.log(promotion);
         notificationCount++;
+        sendDiscordWebhookMessage(promotion);
         addAlreadyNotified(promotion);
     }
 
@@ -38,5 +41,5 @@ checkNewFreeGames();
 
 
 setInterval(() => {
-
-}, 10000)
+    checkNewFreeGames();
+}, config.intervalDelay * 1000)
