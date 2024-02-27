@@ -1,13 +1,14 @@
+import 'dotenv/config'
+
 const config = {
 
-    // TODO: move to .env
-    locale: 'en-US',
-    country: 'DE',
+    locale: process.env.LOCALE || 'en-US',
+    country: process.env.COUNTRY || 'DE',
 
-    intervalDelay: 3600,
+    intervalDelay: parseInt(process.env.INTERVAL_DELAY || '3600'),
 
     notifications: {
-        discord: []
+        discord: (process.env.DISCORD_WEBHOOKS || '').split(',')
     }
 
 }
