@@ -66,12 +66,12 @@ const epicGamesGetFreeGames = async () => {
             // loop over current promotions to find current offer
             for (const x of gameEpic.promotions.promotionalOffers) {
                 if(x.promotionalOffers) {
-                for (const y of x.promotionalOffers) {
-                    if(y.startDate && y.endDate && y.discountSetting.discountPercentage === 0) {
-                        promotionTMP.startDate = new Date(y.startDate);
-                        promotionTMP.endDate = new Date(y.endDate);
+                    for (const y of x.promotionalOffers) {
+                        if(y.startDate && y.endDate && y.discountSetting.discountPercentage === 0) {
+                            promotionTMP.startDate = new Date(y.startDate);
+                            promotionTMP.endDate = new Date(y.endDate);
+                        }
                     }
-                }
                 }
             }
 
