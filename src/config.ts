@@ -8,7 +8,7 @@ const config = {
     intervalDelay: parseInt(process.env.INTERVAL_DELAY || '3600'),
 
     notifications: {
-        discord: (process.env.DISCORD_WEBHOOKS || '').split(',')
+        discord: process.env.DISCORD_WEBHOOKS?process.env.DISCORD_WEBHOOKS.split(','):[]
     }
 
 }
