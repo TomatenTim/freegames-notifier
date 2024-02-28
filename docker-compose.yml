@@ -1,0 +1,12 @@
+version: "3.4"
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      - DISCORD_WEBHOOKS=<discord webhooks comma separated>
+    volumes:
+      - data:/app/data
+
+volumes:
+  data:
