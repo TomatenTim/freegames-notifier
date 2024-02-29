@@ -36,7 +36,7 @@ const epicGamesGetFreeGames = async () => {
             // get game information
             const game:Promotion['game'] = {
                 id: gameEpic.id,
-                url: gameEpic.url || `https://store.epicgames.com/${config.country}/p/${gameEpic.urlSlug}`,
+                url: gameEpic.url || `https://store.epicgames.com/${config.country}/p/${gameEpic.productSlug}`,
                 price: gameEpic.price.totalPrice.originalPrice,
                 priceCurrency: gameEpic.price.totalPrice.currencyCode,
                 name: gameEpic.title,
