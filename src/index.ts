@@ -42,4 +42,4 @@ checkNewFreeGames();
 
 setInterval(() => {
     checkNewFreeGames();
-}, config.intervalDelay * 1000)
+}, config.checkInterval * 1000)
