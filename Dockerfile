@@ -1,4 +1,4 @@
-FROM node:20-bullseye-slim AS build
+FROM node:alpine AS build
 WORKDIR /app
 COPY ./package*.json ./
 RUN npm i
