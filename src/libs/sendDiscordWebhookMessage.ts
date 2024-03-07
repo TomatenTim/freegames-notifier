@@ -8,12 +8,15 @@ const sendDiscordWebhookMessage = (promotion: Promotion) => {
 
     const embed = new EmbedBuilder()
         .setTitle(promotion.game.name)
-        .setURL(promotion.game.url)
         .setThumbnail(promotion.game.mainImage)
         .setDescription(promotion.game.description)
         .setFooter({ text: 'Offer ends' })
         .setTimestamp(promotion.endDate)
         .setColor(0x972be9);
+
+    if(promotion.game.url) {
+        embed.setURL(promotion.game.url);
+    }
 
     for (const discordWebhookUrl of config.notifications.discord) {
         const webhookClient = new WebhookClient({ url: discordWebhookUrl });

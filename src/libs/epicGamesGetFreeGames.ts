@@ -33,10 +33,20 @@ const epicGamesGetFreeGames = async () => {
                 return null;
             }
 
+            // get url from game
+            let url = gameEpic.url
+            if(!url) {
+                // get the pageSlug 
+                const pageSlug = gameEpic.catalogNs.mappings.find(x => x.pageType == 'productHome')?.pageSlug;
+                if(pageSlug) {
+                    url = `https://store.epicgames.com/${config.country}/p/${pageSlug}`
+                }
+            }
+
             // get game information
             const game:Promotion['game'] = {
                 id: gameEpic.id,
-                url: gameEpic.url || `https://store.epicgames.com/${config.country}/p/${gameEpic.productSlug}`,
+                url: url,
                 price: gameEpic.price.totalPrice.originalPrice,
                 priceCurrency: gameEpic.price.totalPrice.currencyCode,
                 name: gameEpic.title,

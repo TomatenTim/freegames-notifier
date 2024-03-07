@@ -7,7 +7,7 @@ interface Seller {
 
 interface Game {
     id: string;
-    url: string;
+    url?: string;
     price: number;
     priceCurrency: string; 
     name: string;
