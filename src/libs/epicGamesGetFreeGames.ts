@@ -37,7 +37,7 @@ const epicGamesGetFreeGames = async () => {
             let url = gameEpic.url
             if(!url) {
                 // get the pageSlug 
-                const pageSlug = gameEpic.catalogNs.mappings.find(x => x.pageType == 'productHome')?.pageSlug;
+                const pageSlug = gameEpic.catalogNs.mappings?.find(x => x.pageType == 'productHome')?.pageSlug;
                 if(pageSlug) {
                     url = `https://store.epicgames.com/${config.country}/p/${pageSlug}`
                 }

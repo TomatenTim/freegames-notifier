@@ -46,7 +46,7 @@ interface DataCatalogSearchStoreElements {
         id: string;
     }[];
     catalogNs: {
-        mappings: {
+        mappings?: {
         pageSlug: string;
         pageType: string;
         }[];
