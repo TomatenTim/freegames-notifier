@@ -35,6 +35,24 @@ const epicGamesGetFreeGames = async () => {
 
             // get url from game
             let url = gameEpic.url
+
+            if(!url) {
+                // get the productSlug
+                const productSlug = gameEpic.productSlug;
+                if(productSlug && productSlug != '[]') {
+                    url = `https://store.epicgames.com/${config.country}/p/${productSlug}`
+                }
+            }
+
+            if(!url) {
+                // get the other productSlug
+                const productSlug = gameEpic.customAttributes?.find(x => x.key == 'com.epicgames.app.productSlug')?.value;
+                if(productSlug) {
+                    url = `https://store.epicgames.com/${config.country}/p/${productSlug}`
+                }
+            }
+
+
             if(!url) {
                 // get the pageSlug 
                 const pageSlug = gameEpic.catalogNs.mappings?.find(x => x.pageType == 'productHome')?.pageSlug;
@@ -99,6 +117,7 @@ const epicGamesGetFreeGames = async () => {
 
             // no promotion date found
             if(!promotionTMP.startDate || !promotionTMP.endDate) {
+                console.log(`[Epic Games] Clouldn't find start or end date of the promotion for ${game.name}`)
                 return null
             }
 
